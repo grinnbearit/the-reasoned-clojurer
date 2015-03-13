@@ -17,7 +17,7 @@
 
 
 (run* [out]
-      (== (mem :tofu [:a :b :tofu :d :peas :e]) out))
+  (== (mem :tofu [:a :b :tofu :d :peas :e]) out))
 ;;; => ((:tofu :d :peas :e))
 
 
@@ -27,58 +27,58 @@
    [(emptyo l) u#]
    [(eq-caro l x) (== l out)]
    [s# (fresh [d]
-              (resto l d)
-              (memo x d out))]))
+         (resto l d)
+         (memo x d out))]))
 
 
 (run 1 [out]
-     (memo :tofu [:a :b :tofu :d :tofu :e] out))
+  (memo :tofu [:a :b :tofu :d :tofu :e] out))
 ;;; => ((:tofu :d :tofu :e))
 
 
 (run 1 [out]
-     (fresh [x]
-            (memo :tofu [:a :b x :d :tofu :e] out)))
+  (fresh [x]
+    (memo :tofu [:a :b x :d :tofu :e] out)))
 ;;; => ((:tofu :d :tofu :e))
 
 
 (run* [r]
-      (memo r [:a :b :tofu :d :tofu :e] [:tofu :d :tofu :e]))
+  (memo r [:a :b :tofu :d :tofu :e] [:tofu :d :tofu :e]))
 ;;; => (:tofu)
 
 
 (run* [q]
-      (memo :tofu [:tofu :e] [:tofu :e])
-      (== true q))
+  (memo :tofu [:tofu :e] [:tofu :e])
+  (== true q))
 ;;; => (true)
 
 
 (run* [q]
-      (memo :tofu [:tofu :e] [:tofu])
-      (== true q))
+  (memo :tofu [:tofu :e] [:tofu])
+  (== true q))
 ;;; => ()
 
 
 (run* [x]
-      (memo :tofu [:tofu :e] [x :e]))
+  (memo :tofu [:tofu :e] [x :e]))
 ;;; => (:tofu)
 
 
 (run* [x]
-      (memo :tofu [:tofu :e] [:peas x]))
+  (memo :tofu [:tofu :e] [:peas x]))
 ;;; => ()
 
 
 (run* [out]
-      (fresh [x]
-             (memo :tofu [:a :b x :d :tofu :e] out)))
+  (fresh [x]
+    (memo :tofu [:a :b x :d :tofu :e] out)))
 ;;; => ((:tofu :d :tofu :e)
 ;;;     (:tofu :e))
 
 
 (run 12 [z]
-     (fresh [u]
-            (memo :tofu (llist :a :b :tofu :d :tofu :e z) u)))
+  (fresh [u]
+    (memo :tofu (llist :a :b :tofu :d :tofu :e z) u)))
 ;;; => (_0
 ;;;     _0
 ;;;     (:tofu . _0)
@@ -98,8 +98,8 @@
   (conde
    [(eq-caro l x) (== l out)]
    [s# (fresh [d]
-              (resto l d)
-              (memo x d out))]))
+         (resto l d)
+         (memo x d out))]))
 
 
 (defn rember
@@ -120,12 +120,12 @@
    [(emptyo l) (== () out)]
    [(eq-caro l x) (resto l out)]
    [s# (fresh [res]
-              (fresh [d]
-                     (resto l d)
-                     (rembero x d res))
-              (fresh [a]
-                     (firsto l a)
-                     (conso a res out)))]))
+         (fresh [d]
+           (resto l d)
+           (rembero x d res))
+         (fresh [a]
+           (firsto l a)
+           (conso a res out)))]))
 
 
 (defn rembero
@@ -134,20 +134,20 @@
    [(emptyo l) (== () out)]
    [(eq-caro l x) (resto l out)]
    [s# (fresh [a d res]
-              (conso a d l)
-              (rembero x d res)
-              (conso a res out))]))
+         (conso a d l)
+         (rembero x d res)
+         (conso a res out))]))
 
 
 (run 1 [out]
-     (fresh [y]
-            (rembero :peas [:a :b y :d :peas :e] out)))
+  (fresh [y]
+    (rembero :peas [:a :b y :d :peas :e] out)))
 ;;; => ((:a :b :d :peas :e))
 
 
 (run* [out]
-      (fresh [y z]
-             (rembero y [:a :b y :d z :e] out)))
+  (fresh [y z]
+    (rembero y [:a :b y :d z :e] out)))
 ;;; => ((:b :a :d _0 :e)
 ;;;     (:a :b :d _0 :e)
 ;;;     (:a :b :d _0 :e)
@@ -158,9 +158,9 @@
 
 
 (run* [r]
-      (fresh [y z]
-             (rembero y [y :d z :e] [y :d :e])
-             (== [y z] r)))
+  (fresh [y z]
+    (rembero y [y :d z :e] [y :d :e])
+    (== [y z] r)))
 ;;; => ([:d :d]
 ;;;     [:d :d]
 ;;;     [_0 _0]
@@ -168,8 +168,8 @@
 
 
 (run 13 [w]
-     (fresh [y z out]
-            (rembero y (llist :a :b y :d z w) out)))
+  (fresh [y z out]
+    (rembero y (llist :a :b y :d z w) out)))
 ;;; => (_0
 ;;;     _0
 ;;;     _0
@@ -191,17 +191,17 @@
 
 
 (run* [r]
-      (== :d r)
-      (surpriseo r))
+  (== :d r)
+  (surpriseo r))
 ;;; => (:d)
 
 
 (run* [r]
-      (surpriseo r))
+  (surpriseo r))
 ;;; => (_0)
 
 
 (run* [r]
-      (surpriseo r)
-      (== r :b))
+  (== r :b)
+  (surpriseo r))
 ;;; => (:b)
