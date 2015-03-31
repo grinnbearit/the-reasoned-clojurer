@@ -1,6 +1,6 @@
 (ns the-reasoned-clojurer.playthings
   (:refer-clojure :exclude [==])
-  (:use [clojure.core.logic :only [run* s# u# == fresh conde run]]))
+  (:require [clojure.core.logic :refer [run* s# u# == fresh conde run]]))
 
 
 (run* [q]

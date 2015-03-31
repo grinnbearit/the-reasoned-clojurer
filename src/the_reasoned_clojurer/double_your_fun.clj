@@ -1,7 +1,7 @@
 (ns the-reasoned-clojurer.double-your-fun
   (:refer-clojure :exclude [== flatten])
-  (:use [clojure.core.logic :only [conde emptyo == s# fresh firsto resto conso run* llist run]]
-        [the-reasoned-clojurer.teaching-old-toys-new-tricks :only [pairo]]))
+  (:require [clojure.core.logic :refer [conde emptyo == s# fresh firsto resto conso run* llist run]]
+            [the-reasoned-clojurer.teaching-old-toys-new-tricks :refer [pairo]]))
 
 
 (defn append

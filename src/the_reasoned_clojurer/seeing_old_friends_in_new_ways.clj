@@ -1,8 +1,8 @@
 (ns the-reasoned-clojurer.seeing-old-friends-in-new-ways
   (:refer-clojure :exclude [== identity])
-  (:use [clojure.core.logic :only [conde emptyo s# resto fresh u# run* run lcons
-                                   llist firsto == conso]]
-        [the-reasoned-clojurer.teaching-old-toys-new-tricks :only [pairo]]))
+  (:require [clojure.core.logic :refer [conde emptyo s# resto fresh u# run* run lcons
+                                        llist firsto == conso]]
+            [the-reasoned-clojurer.teaching-old-toys-new-tricks :refer [pairo]]))
 
 
 (defn listo

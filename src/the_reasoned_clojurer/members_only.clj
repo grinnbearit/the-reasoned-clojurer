@@ -1,7 +1,7 @@
 (ns the-reasoned-clojurer.members-only
   (:refer-clojure :exclude [==])
-  (:use [clojure.core.logic :only [run* == conde emptyo u# s# fresh resto run llist firsto conso]]
-        [the-reasoned-clojurer.seeing-old-friends-in-new-ways :only [eq-car? eq-caro]]))
+  (:require [clojure.core.logic :refer [run* == conde emptyo u# s# fresh resto run llist firsto conso]]
+            [the-reasoned-clojurer.seeing-old-friends-in-new-ways :refer [eq-car? eq-caro]]))
 
 
 (defn mem

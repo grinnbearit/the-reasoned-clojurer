@@ -1,6 +1,6 @@
 (ns the-reasoned-clojurer.teaching-old-toys-new-tricks
   (:refer-clojure :exclude [==])
-  (:use [clojure.core.logic :only [run* fresh == firsto lcons resto conso emptyo]]))
+  (:require [clojure.core.logic :refer [run* fresh == firsto lcons resto conso emptyo]]))
 
 
 (run* [r]
